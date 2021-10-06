@@ -11,14 +11,14 @@ class FoodListpage extends StatefulWidget {
 
 class _FoodListpageState extends State<FoodListpage> {
   var items = [
-    FoodItem(id: 1, name: "ข้าวไข่เจียว", price: 25, image: 'kao_kai_jeaw.jpg'),
-    FoodItem(id: 2, name: "ข้าวหมูแดง", price: 30, image: 'kao_moo_dang.jpg'),
-    FoodItem(id: 3, name: "ข้าวมันไก่", price: 30, image: 'kao_mun_kai.jpg'),
+    FoodItem(id: 1, name: "ข้าวไข่เจียว", price: 30, image: 'kao_kai_jeaw.jpg'),
+    FoodItem(id: 2, name: "ข้าวหมูแดง", price: 40, image: 'kao_moo_dang.jpg'),
+    FoodItem(id: 3, name: "ข้าวมันไก่", price: 40, image: 'kao_mun_kai.jpg'),
     FoodItem(id: 4, name: "ข้าวหน้าเป็ด", price: 40, image: 'kao_na_ped.jpg'),
-    FoodItem(id: 5, name: "ข้าวผัด", price: 30, image: 'kao_pad.jpg'),
+    FoodItem(id: 5, name: "ข้าวผัด", price: 40, image: 'kao_pad.jpg'),
     FoodItem(id: 6, name: "ผัดซีอิ๊ว", price: 40, image: 'pad_sie_eew.jpg'),
     FoodItem(id: 7, name: "ราดหน้า", price: 40, image: 'rad_na.jpg'),
-    FoodItem(id: 8, name: "ผัดไทย", price: 40, image: 'pad_thai.jpg'),
+    FoodItem(id: 8, name: "ผัดไทย", price: 35, image: 'pad_thai.jpg'),
     FoodItem(id: 9, name: "ส้มตำไก่ย่าง", price: 80, image: 'kao_moo_dang.jpg'),
   ];
 

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_food/pages/food/food_list_page.dart';
 import 'package:flutter_food/pages/login/login_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -231,7 +232,7 @@ class _FoodPageState extends State<FoodPage> {
   Widget _bulidSubPage() {
     switch (_selectedBottomNavIndex) {
       case 0:
-        return FoodListPage();
+        return FoodListpage();
       case 1:
         return OrderPage()
         ;
@@ -242,31 +243,6 @@ class _FoodPageState extends State<FoodPage> {
   }
 }
 
-class FoodListPage extends StatelessWidget {
-  const FoodListPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Center(
-          child: Opacity(
-            opacity: 0.7,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'FOOD MENU',
-                  style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
 class OrderPage extends StatelessWidget {
   const OrderPage({Key? key}) : super(key: key);
 

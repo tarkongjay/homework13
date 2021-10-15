@@ -1,7 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food/pages/home/home_page.dart';
-
+import 'package:http/http.dart' as http;
 class LoginPage extends StatefulWidget {
   static const routeName = '/login';
 
@@ -223,8 +225,7 @@ class _LoginPageState extends State<LoginPage> {
         _showMaterial();
         input = '';
       }
-      if(input == '123456'){
-        Navigator.pushReplacementNamed(context, HomePage.routeName);
+      if(input == _test()){
         //Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()),);
                input = '';
       }
@@ -262,6 +263,27 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
     );
+  }
+
+  Future<void> _test()async {
+    var url = Uri.parse('https://cpsu-test-api.herokuapp.com/login');
+    var response = await http.post(url,body:
+    {
+      "pin": input
+    }
+    );
+    if (response.statusCode== 200){
+      //ดึงค่า
+      Map<String,dynamic> jsonBody = json.decode(response.body);
+      String status = jsonBody['status'];
+      String? message = jsonBody['message'];
+      bool data =  jsonBody['data'];
+      print('Status $data');
+      if(data == true){
+        Navigator.pushReplacementNamed(context, HomePage.routeName);
+      }
+    }
+
   }
 }
 

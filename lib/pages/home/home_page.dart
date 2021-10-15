@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_food/models/food_item.dart';
 import 'package:flutter_food/pages/food/food_list_page.dart';
 import 'package:flutter_food/pages/login/login_page.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   static const routeName = '/home';
@@ -114,10 +118,18 @@ class _HomePageState extends State<HomePage> {
           ? AppBar(
         title: Text('Food'),
         backgroundColor: Colors.purple,
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+          IconButton(onPressed: (){}, icon: Icon(Icons.refresh)),
+        ],
       )
           : AppBar(
         title: Text('Profile'),
         backgroundColor: Colors.purple,
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+          IconButton(onPressed: (){}, icon: Icon(Icons.refresh)),
+        ],
       ),
       body: Container(
         child: _bulidSubPage(),
@@ -221,14 +233,39 @@ class _FoodPageState extends State<FoodPage> {
             _selectedBottomNavIndex = index;
           }
           );
-
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _test,
+        child: Icon(Icons.add),
+        backgroundColor: Colors.purple,
       ),
       body: Container(
          child: _bulidSubPage(),
       ),
     );
   }
+
+  Future<void> _test() async {
+var url = Uri.parse('https://cpsu-test-api.herokuapp.com/foods');
+  var response = await http.get(url);
+  if (response.statusCode== 200){
+    //ดึงค่า
+    Map<String,dynamic> jsonBody = json.decode(response.body);
+    String status = jsonBody['status'];
+    String? message = jsonBody['message'];
+    List<dynamic> data =  jsonBody['data'];
+
+  var foodList = data.map((element) => FoodItem(
+      id: element['id'],
+      name: element['name'],
+      price: element['price'],
+      image: element['image'])
+  ).toList();
+  }
+  }
+
+
   Widget _bulidSubPage() {
     switch (_selectedBottomNavIndex) {
       case 0:
